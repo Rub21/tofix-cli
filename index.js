@@ -1,19 +1,19 @@
 var fs = require('fs');
 var request = require('request');
 var tasks = require('./tasks.js').tasks;
-var host = 'https://build-to-fix-staging.tilestream.net';
+var host = process.argv[2];
 var flag = 0;
 var errores = 0;
 
 function upload(task) {
-  console.log('creating :' + task.name);
   if (tasks[flag]) {
+    console.log('creating :' + task.name);
     var formData = {
       name: task.name,
       description: task.description,
       changesetComment: task.changesetComment,
       file: fs.createReadStream(task.file),
-      password: process.argv[2]
+      password: process.argv[3]
     };
     request.post({
       url: host + '/tasks',
@@ -37,7 +37,6 @@ function upload(task) {
   } else {
     console.log('completed');
   }
-
 }
 
 upload(tasks[flag]);
