@@ -101,16 +101,25 @@ module.exports = {
         //     file: "./data/unconnectedhighways-major.geojson",
         //     changesetComment: "Connecting motorable roads using #to-fix https://github.com/mapbox/mapping/issues/105"
         // }
+        // 
+        
+        // {
+        //     name: "Crossing major highways and buildings",
+        //     description: "Major highways which are intersecting with buildings.",
+        //     file: "./data/crossinghighwaysbuildings.MultiPoint.major.geojson",
+        //     changesetComment: "Fixing major highways which is crossing with buildings"
+        // }, {
+        //     name: "Crossing minor highways and buildings",
+        //     description: "Minor highways which are intersecting with buildings",
+        //     file: "./data/crossinghighwaysbuildings.MultiPoint.minor.geojson",
+        //     changesetComment: "Fixing minor highways which is crossing with buildings"
+        // }
+
         {
-            name: "Crossing major highways and buildings",
-            description: "Major highways which are intersecting with buildings.",
-            file: "./data/crossinghighwaysbuildings.MultiPoint.major.geojson",
-            changesetComment: "Fixing major highways which is crossing with buildings"
-        }, {
-            name: "Crossing minor highways and buildings",
-            description: "Minor highways which are intersecting with buildings",
-            file: "./data/crossinghighwaysbuildings.MultiPoint.minor.geojson",
-            changesetComment: "Fixing minor highways which is crossing with buildings"
+            name: "Tiger delta",
+            description: "Tiger delta cover Georgia State",
+            file: "./data/tiger.geojson",
+            changesetComment: "Tigerdelta, Aligning or naming imported tiger roads #to-fix"
         }
 
     ]
