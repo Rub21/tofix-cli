@@ -117,9 +117,9 @@ module.exports = {
 
         {
             name: "Tiger delta",
-            description: "Tiger delta cover Georgia State",
+            description: "Detection of tiger delta for main cities in the United States",
             file: "./data/tiger.geojson",
-            changesetComment: "Tigerdelta, Aligning or naming imported tiger roads #to-fix"
+            changesetComment: "Aligning or naming imported tiger roads #to-fix"
         }
 
     ]
