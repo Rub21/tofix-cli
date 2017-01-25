@@ -10,7 +10,6 @@
     "tfcli": "index.js"
   },
   "dependencies": {
-    "commander": "^2.9.0",
     "minimist": "^1.2.0",
     "request": "^2.69.0"
   },
