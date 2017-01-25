@@ -1,42 +1,37 @@
-var fs = require('fs');
-var request = require('request');
-var tasks = require('./tasks.js').tasks;
-var host = process.argv[2];
-var flag = 0;
-var errores = 0;
+#!/usr/bin/env node
 
-function upload(task) {
-  if (tasks[flag]) {
-    console.log('creating :' + task.name);
-    var formData = {
-      name: task.name,
-      description: task.description,
-      changesetComment: task.changesetComment,
-      file: fs.createReadStream(task.file),
-      password: process.argv[3]
-    };
-    request.post({
-      url: host + '/tasks',
-      formData: formData
-    }, function(err, res) {
-      // console.log(res)
-      if (res.statusCode == 200) {
-        flag++;
-        console.log(tasks[flag]);
-        upload(tasks[flag]);
-      } else {
-        console.log(err);
-        if (errores < 4) {
-          upload(tasks[flag]);
-          errores++;
-        } else {
-          return;
-        }
-      }
-    });
-  } else {
-    console.log('completed');
+var argv = require('minimist')(process.argv.slice(2));
+var crudTask = require('./src/crudTask');
+var crudUser = require('./src/crudUser');
+var settingTask = require('./src/settingTask');
+var config = require('./src/config');
+var host = config[argv._[0]];
+var action = argv._[1];
+
+if (host) {
+  switch (action) {
+    case 'create':
+      crudTask.create(host, argv.file);
+      break;
+    case 'list':
+      crudTask.list(host);
+      break;
+    case 'update':
+      crudTask.update(host, argv.id, argv.file);
+      break;
+    case 'delete':
+      crudTask.delete(host, argv.id);
+      break;
+    case 'changerole':
+      crudUser.changerole(host, argv.role, argv.iduser);
+      break;
+    case 'deleteuser':
+      crudUser.deleteuser(host, argv.iduser);
+      break;
+    case 'replacetask':
+      settingTask.replacetask(host, argv.id);
+      break;
+    default:
+      console.log('unknown command');
   }
 }
-
-upload(tasks[flag]);
