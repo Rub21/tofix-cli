@@ -7,7 +7,7 @@
 
 - dev, staging, production
 
-`export toke="xxx"`
+`export token="xxx"`
 
 #### Create a task
 
