@@ -6,7 +6,7 @@ module.exports = {
     console.log('SETTING TASK :' + host + '/tasks');
     var task = {
       "idtask": "tigerdeltauadtb",
-      "isCompleted": false,
+      "isCompleted": true,
       "isAllItemsLoad": true,
       "value": {
         "name": "Tiger delta",
@@ -15,12 +15,12 @@ module.exports = {
         "changesetComment": "Aligning or naming imported tiger roads #to-fix",
         "stats": [{
           "date": 1483388084,
-          "edit": 117090,
-          "fixed": 36306,
-          "skip": 469,
+          "edit": 125461,
+          "fixed": 38158,
+          "skip": 480,
           "type": "tigerdeltauadtb",
-          "items": 126981,
-          "noterror": 77670
+          "items": 122175,
+          "noterror": 84017
         }]
       },
       "iduser": "1781294"
@@ -32,7 +32,27 @@ module.exports = {
       obj: JSON.stringify(task)
     };
     request.post({
-      url: host + '/settingtask',
+      url: host + '/setting/tasks',
+      formData: formData,
+      auth: {
+        'bearer': token
+      }
+    }, function(err, res) {
+      if (err) console.log(err);
+      console.log(res.body);
+    });
+  },
+
+  updateNoterror: function(host, idtask, file) {
+    var ids = JSON.parse(fs.readFileSync(file, 'utf8'));
+    var formData = {
+      index: 'tofix',
+      type: idtask + '_noterror',
+      id: idtask,
+      obj: JSON.stringify(ids)
+    };
+    request.post({
+      url: host + '/setting/items',
       formData: formData,
       auth: {
         'bearer': token

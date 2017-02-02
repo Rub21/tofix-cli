@@ -36,6 +36,15 @@ tfcli staging update -id unconnectedmajorhighwayshmdcz -file sample.geojson
 `tfcli staging deleteuser --iduser 51320836`
 
 
+#### list users
+
+`tfcli staging listusers`
+
+
 ### Setting a task 
 
 `tfcli replacetask staging  --id tigerdeltauadtb`
+
+### Update the noterro type
+
+` tfcli staging  updateNoterror --id unconnectedmajorhighwaysbnrkv --file arraydekeys.json`

@@ -28,8 +28,14 @@ if (host) {
     case 'deleteuser':
       crudUser.deleteuser(host, argv.iduser);
       break;
+    case 'listusers':
+      crudUser.listusers(host);
+      break;
     case 'replacetask':
       settingTask.replacetask(host, argv.id);
+      break;
+    case 'updateNoterror':
+      settingTask.updateNoterror(host, argv.id, argv.file);
       break;
     default:
       console.log('unknown command');

@@ -32,5 +32,14 @@ module.exports = {
       if (err) console.log(err);
       console.log(res.body);
     });
+  },
+  listusers: function(host) {
+    console.log('LIST :' + host + '/users');
+    request.get({
+      url: host + '/users?token='+token,
+    }, function(err, res) {
+      if (err) console.log(err);
+      console.log(res.body);
+    });
   }
 };

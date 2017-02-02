@@ -1,10 +1,10 @@
 var fs = require('fs');
 var request = require('request');
 var task = {
-  "name": "Tiger delta",
-  "description": "Detection of tiger delta for main cities in the United States",
-  "file": "./data/tiger.geojson",
-  "changesetComment": "Aligning or naming imported tiger roads #to-fix"
+  "name": "Unconnected minor highways",
+  "description": "Minor highways which are disconnected with other highways",
+  // "file": "./data/tiger.geojson",
+  "changesetComment": "Connecting motorable roads using #to-fix https://github.com/mapbox/mapping/issues/105"
 };
 var token = process.env.token;
 module.exports = {
