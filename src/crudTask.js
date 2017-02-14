@@ -1,10 +1,10 @@
 var fs = require('fs');
 var request = require('request');
 var task = {
-  "name": "Unconnected minor highways",
-  "description": "Minor highways which are disconnected with other highways",
+  "name": "Double places",
+  "description": "Nodes and polygons that share attributes",
   // "file": "./data/tiger.geojson",
-  "changesetComment": "Connecting motorable roads using #to-fix https://github.com/mapbox/mapping/issues/105"
+  "changesetComment": "Deleting nodes that has same attributes than buildings #to-fix"
 };
 var token = process.env.token;
 module.exports = {
