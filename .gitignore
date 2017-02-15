@@ -2,4 +2,3 @@ node_modules
 *.zip
 *.geojson
 *.json
-export/
