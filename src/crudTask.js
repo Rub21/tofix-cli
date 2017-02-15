@@ -1,19 +1,13 @@
 var fs = require('fs');
 var request = require('request');
-var task = {
-  "name": "Double places",
-  "description": "Nodes and polygons that share attributes",
-  // "file": "./data/tiger.geojson",
-  "changesetComment": "Deleting nodes that has same attributes than buildings #to-fix"
-};
 var token = process.env.token;
 module.exports = {
-  create: function(host, file) {
+  create: function(host, file, name, description, changesetComment) {
     console.log('CREATE TASK :' + host + '/tasks');
     var formData = {
-      name: task.name,
-      description: task.description,
-      changesetComment: task.changesetComment,
+      name: name,
+      description: description,
+      changesetComment: changesetComment,
       file: fs.createReadStream(file)
     };
     request.post({
@@ -36,14 +30,14 @@ module.exports = {
       console.log(res.body);
     });
   },
-  update: function(host, idtask, file) {
+  update: function(host, idtask, file, name, description, changesetComment) {
     console.log('UPDATE TASK :' + host + '/tasks');
     // Actualizar aqui para la tarea
     var formData = {
       idtask: idtask,
-      name: 'Crossing major highways and buildings',
-      description: 'Major highways which are intersecting with buildings',
-      changesetComment: 'Fixing major highways which are crossing with buildings',
+      name: name,
+      description: description,
+      changesetComment: changesetComment,
       isCompleted: 'false'
     };
     if (file) {

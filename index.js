@@ -15,16 +15,16 @@ var action = argv._[1];
 if (host) {
   switch (action) {
     case 'create':
-      crudTask.create(host, argv.file);
+      crudTask.create(host, argv.file, argv.name, argv.description, argv.changesetcomment);
       break;
     case 'list':
       crudTask.list(host);
       break;
     case 'update':
-      crudTask.update(host, argv.id, argv.file);
+      crudTask.update(host, argv.idtask, argv.file, argv.name, argv.description, argv.changesetcomment);
       break;
     case 'delete':
-      crudTask.delete(host, argv.id);
+      crudTask.delete(host, argv.idtask);
       break;
     case 'changerole':
       crudUser.changerole(host, argv.role, argv.iduser);
@@ -36,10 +36,10 @@ if (host) {
       crudUser.listusers(host);
       break;
     case 'replacetask':
-      settingTask.replacetask(host, argv.id);
+      settingTask.replacetask(host, argv.idtask);
       break;
     case 'updateNoterror':
-      settingTask.updateNoterror(host, argv.id, argv.file);
+      settingTask.updateNoterror(host, argv.idtask, argv.file);
       break;
     case 'deleteitem':
       crudItem.delete(host, argv.idtask, argv.type, argv.key);
