@@ -11,7 +11,10 @@
 
 #### Create a task
 
-`tfcli staging create --file sample.geojson`
+```
+tfcli staging create --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson
+
+```
 
 ### List tasks
 
@@ -20,12 +23,13 @@
 ### Update a Task
 
 ```
-tfcli staging update -id unconnectedmajorhighwayshmdcz -file sample.geojson 
+tfcli staging create  --idtask 'abc' --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson
+
 ```
 
 ### Delete a task
 
-`txcli staging delete --id unconnectedmajorhighwayshmdcz`
+`txcli staging delete --idtask unconnectedmajorhighwayshmdcz`
 
 #### Change user role
 
@@ -43,8 +47,8 @@ tfcli staging update -id unconnectedmajorhighwayshmdcz -file sample.geojson
 
 ### Setting a task 
 
-`tfcli replacetask staging  --id tigerdeltauadtb`
+`tfcli replacetask staging  --idtask tigerdeltauadtb`
 
 ### Update the noterro type
 
-` tfcli staging  updateNoterror --id unconnectedmajorhighwaysbnrkv --file arraydekeys.json`
+` tfcli staging  updateNoterror --idtask unconnectedmajorhighwaysbnrkv --file arraydekeys.json`
