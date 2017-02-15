@@ -30,7 +30,8 @@ var tasksBases = ['tigerdelta',
   'crossingminorhighways',
   'crossingmajorhighways',
   'overlappingmajorhighways',
-  'overlappingminorhighways'
+  'overlappingminorhighways',
+  'doubleplaces'
 ];
 
 module.exports = {
