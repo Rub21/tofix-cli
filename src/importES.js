@@ -36,7 +36,7 @@ module.exports = {
       function createUsers(user) {
         console.log('CREATE USER : ' + user.id);
         request.post({
-          url: host + '/create',
+          url: host + '/settings/create',
           formData: {
             index: 'tofix',
             type: 'users',
@@ -136,7 +136,7 @@ module.exports = {
               }
             }
             request.post({
-              url: host + '/update',
+              url: host + '/settings/update',
               formData: {
                 index: 'tofix',
                 type: 'tasks',
@@ -174,7 +174,7 @@ module.exports = {
           console.log('UPDATE STATS:' + task.idtask);
           readfile('stats/' + task.idtask + '-stats.json', function(data) {
             request.post({
-              url: host + '/createstats',
+              url: host + '/settings/stats',
               formData: {
                 index: 'tofix',
                 type: task.idtask + '_trackstats',
@@ -212,7 +212,7 @@ module.exports = {
           console.log('UPDATE NOTERROR:' + task.idtask);
           readfile('noterror/' + task.idtask + '-noterror.json', function(data) {
             request.post({
-              url: host + '/createnoterror',
+              url: host + '/settings/noterror',
               formData: {
                 index: 'tofix',
                 type: task.idtask + '_noterror',
