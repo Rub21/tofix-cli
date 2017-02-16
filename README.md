@@ -1,4 +1,4 @@
-# to-fix-backend CLI
+# To-fix-backend CLI
 
 ### Istalation
 
@@ -41,7 +41,7 @@ $ npm link
 
 `tfcli staging deleteuser --iduser 51320836`
 
-### list users
+### List users
 
 `tfcli staging listusers`
 
