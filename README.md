@@ -45,12 +45,4 @@ $ npm link
 
 `tfcli staging listusers`
 
-### Export data from the server
-
-requirements: the user should be a superadmin
-
-`tfcli production export`
-
-### Import data from the server
-
-` tfcli production import`
+### [Export and Import](https://github.com/Rub21/tofix-cli/blob/master/IMPORT.md)
