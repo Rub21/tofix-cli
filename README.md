@@ -1,7 +1,13 @@
 # to-fix-backend CLI
+
 ### Istalation
 
-`npm install`
+```
+$ git clone https://github.com/Rub21/tofix-cli.git
+$ cd tofix-cli/
+$ npm link
+
+```
 
 ### Usage
 
@@ -9,46 +15,40 @@
 
 `export token="xxx"`
 
-#### Create a task
+### Create a task
 
-```
-tfcli staging create --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson
-
-```
+`tfcli staging create --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson`
 
 ### List tasks
 
-`tfcli -l staging`
+`tfcli staging list`
 
 ### Update a Task
 
-```
-tfcli staging create  --idtask 'abc' --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson
-
-```
+`tfcli staging create --idtask 'abc' --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson`
 
 ### Delete a task
 
 `txcli staging delete --idtask unconnectedmajorhighwayshmdcz`
 
-#### Change user role
+### Change user role
 
-`tfcli staging  changerole --role superadmin --iduser 51320836`
+`tfcli staging changerole --role superadmin --iduser 51320836`
 
-#### Delete a user
+### Delete a user
 
 `tfcli staging deleteuser --iduser 51320836`
 
-
-#### list users
+### list users
 
 `tfcli staging listusers`
 
+### Export data from the server
 
-### Setting a task 
+requirements: the user should be a superadmin
 
-`tfcli replacetask staging  --idtask tigerdeltauadtb`
+`tfcli production export`
 
-### Update the noterro type
+### Import data from the server
 
-` tfcli staging  updateNoterror --idtask unconnectedmajorhighwaysbnrkv --file arraydekeys.json`
+` tfcli production import`
