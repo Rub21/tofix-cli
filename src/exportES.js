@@ -3,52 +3,21 @@ var request = require('request');
 var d3 = require('d3-queue');
 var token = process.env.token;
 
-var tasksBases = ['tigerdelta',
-  'brokenpolygons',
-  'islandsmajorhighways',
-  'islandsminorhighways',
-  'crossingmajorhighwaysandbuildings',
-  'crossingminorhighwaysandbuildings',
-  'vegetationbrokenrelation',
-  'conservationbrokenrelationgs',
-  'waterwaybrokenrelation',
-  'unconnectedminorhighways',
-  'unconnectedmajorhighways',
-  'miscellaneousbrokenrelation',
-  'miscellaneousbrokenrelation',
-  'kinksmajorhighways',
-  'kinksminorhighways',
-  'impossibleonewaysminorhighways',
-  'impossibleonewaysmajorhighways',
-  'invalidturnlanes',
-  'missingonewaymotorwaylink',
-  'mixedlayersminorhighways',
-  'mixedlayersmajorhighways',
-  'selfintersectingminorhighways',
-  'selfintersectingmajorhighways',
-  'strangelayer',
-  'crossingminorhighways',
-  'crossingmajorhighways',
-  'overlappingmajorhighways',
-  'overlappingminorhighways',
-  'doubleplaces'
-];
-
 module.exports = {
   export: function(host) {
     var q = d3.queue(1);
     var tasks;
-    //List of tasks
+    fs.existsSync('noterror') || fs.mkdirSync('noterror');
+    fs.existsSync('tasks') || fs.mkdirSync('tasks');
+    fs.existsSync('activity') || fs.mkdirSync('activity');
+    fs.existsSync('detail') || fs.mkdirSync('detail');
+    fs.existsSync('stats') || fs.mkdirSync('stats');
+    fs.existsSync('files') || fs.mkdirSync('files');
+
+   //List of tasks
     q.defer(function(cb) {
       listTasks(host, function(resp) {
         tasks = JSON.parse(resp).tasks;
-        for (var i = 0; i < tasks.length; i++) {
-          for (var k = 0; k < tasksBases.length; k++) {
-            if (tasks[i].idtask.includes(tasksBases[k])) {
-              tasks[i].idtaskBase = tasksBases[k];
-            }
-          }
-        }
         cb();
       });
     });
@@ -65,7 +34,7 @@ module.exports = {
         }, function(err, noterroitemsResp) {
           if (err) console.log(err);
 
-          writeFile('noterror/' + task.idtaskBase + '-noterror.json', JSON.parse(noterroitemsResp.body), function() {
+          writeFile('noterror/' + task.idtask + '-noterror.json', JSON.parse(noterroitemsResp.body), function() {
             num++;
             if (tasks.length > num) {
               downloadNoterror(tasks[num]);
@@ -90,7 +59,7 @@ module.exports = {
           url: host + '/tasks/' + task.idtask + '/track_stats/from:2016-01-01/to:2017-12-31'
         }, function(err, statsReso) {
           if (err) console.log(err);
-          writeFile('stats/' + task.idtaskBase + '-stats.json', JSON.parse(statsReso.body), function() {
+          writeFile('stats/' + task.idtask + '-stats.json', JSON.parse(statsReso.body), function() {
             num++;
             if (tasks.length > num) {
               downloadTaskStats(tasks[num]);
@@ -115,7 +84,7 @@ module.exports = {
           url: host + '/tasks/' + task.idtask + '/activity'
         }, function(err, activityResp) {
           if (err) console.log(err);
-          writeFile('activity/' + task.idtaskBase + '-activity.json', JSON.parse(activityResp.body), function() {
+          writeFile('activity/' + task.idtask + '-activity.json', JSON.parse(activityResp.body), function() {
             num++;
             if (tasks.length > num) {
               downloadActivity(tasks[num]);
@@ -153,8 +122,8 @@ module.exports = {
         }, function(err, detailResp) {
           if (err) console.log(err);
           var taskDetail = JSON.parse(detailResp.body);
-          taskDetail.idtask = task.idtaskBase;
-          writeFile('detail/' + task.idtaskBase + '-detail.json', taskDetail, function() {
+          taskDetail.idtask = task.idtask;
+          writeFile('detail/' + task.idtask + '-detail.json', taskDetail, function() {
             num++;
             if (tasks.length > num) {
               downloadTaskDetail(tasks[num]);
@@ -169,10 +138,6 @@ module.exports = {
 
     //Save list of tasks
     q.defer(function(cb) {
-      for (var i = 0; i < tasks.length; i++) {
-        tasks[i].idtask = tasks[i].idtaskBase;
-        delete tasks[i].idtaskBase;
-      }
       writeFile('tasks.json', tasks, function() {
         cb();
       });

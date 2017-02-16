@@ -15,13 +15,13 @@ var action = argv._[1];
 if (host) {
   switch (action) {
     case 'create':
-      crudTask.create(host, argv.file, argv.name, argv.description, argv.changesetcomment);
+      crudTask.create(host, argv.file, argv.name, argv.description, argv.comment);
       break;
     case 'list':
       crudTask.list(host);
       break;
     case 'update':
-      crudTask.update(host, argv.idtask, argv.file, argv.name, argv.description, argv.changesetcomment);
+      crudTask.update(host, argv.idtask, argv.file, argv.name, argv.description, argv.comment);
       break;
     case 'delete':
       crudTask.delete(host, argv.idtask);

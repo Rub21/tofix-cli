@@ -17,7 +17,7 @@ $ npm link
 
 ### Create a task
 
-`tfcli staging create --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson`
+`tfcli staging create --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
 
 ### List tasks
 
@@ -26,7 +26,7 @@ $ npm link
 ### Update a Task
 
 
-`tfcli staging update  --idtask 'abc' --name 'test' --description 'descripcion' --changesetcomment 'comments' --file output_geojson.geojson`
+`tfcli staging update  --idtask 'abc' --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
 
 
 ### Delete a task

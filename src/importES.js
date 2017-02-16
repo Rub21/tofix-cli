@@ -2,7 +2,7 @@ var fs = require('fs');
 var request = require('request');
 var d3 = require('d3-queue');
 var token = process.env.token;
-
+var emptyfile = 'files/empty.geojson';
 var avoidTasks = ['tigerdelta',
   'vegetationbrokenrelation',
   'conservationbrokenrelationgs',
@@ -10,8 +10,11 @@ var avoidTasks = ['tigerdelta',
   'miscellaneousbrokenrelation',
   'miscellaneousbrokenrelation'
 ];
+
 module.exports = {
   import: function(host) {
+    fs.existsSync('files') || fs.mkdirSync('files');
+    fs.writeFileSync(emptyfile, JSON.stringify(geojson()));
     var q = d3.queue(1);
     var tasks;
     var users;
@@ -58,7 +61,6 @@ module.exports = {
         });
       }
     });
-
     //List of tasks
     q.defer(function(cb) {
       fs.readFile('tasks.json', 'utf8', function(err, data) {
@@ -69,7 +71,8 @@ module.exports = {
         cb();
       });
     });
-    //Dowload files
+
+    //Save your geojson into files folder 
     // q.defer(function(cb) {
     // });
 
@@ -81,11 +84,14 @@ module.exports = {
       function createTasks(task) {
         if (avoidTasks.indexOf(task.idtask) < 0) {
           console.log('CREATE TASK:' + task.idtask);
+          var file = 'files/' + task.idtask + '.geojson';
+          fs.existsSync(file) || (file = emptyfile);
+
           var formData = {
             name: task.value.name,
             description: task.value.description,
             changesetComment: task.value.changesetComment,
-            file: fs.createReadStream('files/' + task.idtask + '.geojson')
+            file: fs.createReadStream(file)
           };
           request.post({
             url: host + '/tasks',
@@ -264,4 +270,46 @@ function readfile(path, done) {
     }
     done(JSON.parse(data));
   });
+}
+
+
+function geojson() {
+  return {
+    "type": "FeatureCollection",
+    "features": [{
+      "type": "Feature",
+      "properties": {
+        "@id": 62547754,
+        "@type": "way",
+        "@version": 4,
+        "@changeset": 42366010,
+        "@uid": 604586,
+        "@user": "kr4z33",
+        "@timestamp": 1474614718,
+        "highway": "primary",
+        "lanes": "3",
+        "name": "Halona Street",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Honolulu, HI",
+        "tiger:name_base": "Halona",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no",
+        "tiger:zip_left": "96817",
+        "tiger:zip_right": "96817",
+        "turn:lanes:forward": "left;through;through",
+        "_osmlint": "turnlanes",
+        "_type": "major"
+      },
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [-157.86476617679, 21.32352765364564],
+          [-157.8653037082404, 21.32422085465808],
+          [-157.8656256571412, 21.32460875845922],
+          [-157.865781057626, 21.324840500820642]
+        ]
+      }
+    }]
+  };
 }
