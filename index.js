@@ -2,6 +2,7 @@
 
 var argv = require('minimist')(process.argv.slice(2));
 var crudTask = require('./src/crudTask');
+var crudProject = require('./src/crudProject');
 var crudItem = require('./src/crudItem');
 var crudUser = require('./src/crudUser');
 var settingTask = require('./src/settingTask');
@@ -49,6 +50,15 @@ if (host) {
       break;
     case 'import':
       importES.import(host);
+      break;
+    case 'createp':
+      crudProject.create(host, argv.name, argv.description, argv.private, argv.users);
+      break;
+    case 'listp':
+      crudProject.list(host);
+      break;
+    case 'updatep':
+      crudProject.update(host, argv.idproject, argv.name, argv.description, argv.private, argv.users);
       break;
     default:
       console.log('unknown command');
