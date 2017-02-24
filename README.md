@@ -15,18 +15,29 @@ $ npm link
 
 `export token="xxx"`
 
+
+### Create a project
+
+**Private project**
+
+`tf dev createp --name 'Navegacion' --description 'Navegation osm project' --private false --users Rub21_nycbuildings,ediyes,samely`
+
+**Public project**
+
+`tf dev createp --name 'Navegacion'  --description 'Navegation osm project' --private false`
+
 ### Create a task
 
-`tfcli staging create --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
+`tf staging create --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
 
 ### List tasks
 
-`tfcli staging list`
+`tf staging list`
 
 ### Update a Task
 
 
-`tfcli staging update  --idtask 'abc' --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
+`tf staging update  --idtask 'abc' --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
 
 
 ### Delete a task
@@ -35,14 +46,14 @@ $ npm link
 
 ### Change user role
 
-`tfcli staging changerole --role superadmin --iduser 51320836`
+`tf staging changerole --role superadmin --iduser 51320836`
 
 ### Delete a user
 
-`tfcli staging deleteuser --iduser 51320836`
+`tf staging deleteuser --iduser 51320836`
 
 ### List users
 
-`tfcli staging listusers`
+`tf staging listusers`
 
 ### [Export and Import](https://github.com/Rub21/tofix-cli/blob/master/IMPORT.md)

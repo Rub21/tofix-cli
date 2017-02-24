@@ -4,7 +4,7 @@ var token = process.env.token;
 
 module.exports = {
   create: function(host, name, description, private, users) {
-    console.log('CREATE PROJECT :' + host + '/project');
+    // console.log('CREATE PROJECT :' + host + '/project');
     var formData = {
       name: name,
       description: description,
@@ -23,7 +23,7 @@ module.exports = {
     });
   },
   list: function(host) {
-    console.log('LIST PROJECTS :' + host + '/tasks');
+    // console.log('LIST PROJECTS :' + host + '/project');
     request.get({
       url: host + '/projects?token=' + token,
     }, function(err, res) {
@@ -45,6 +45,20 @@ module.exports = {
       formData: formData,
       auth: {
         'bearer': token
+      }
+    }, function(err, res) {
+      if (err) console.log(err);
+      console.log(res.body);
+    });
+  },
+  delete: function(host, idproject) {
+    request.delete({
+      url: host + '/projects',
+      formData: {
+        idproject: idproject
+      },
+      auth: {
+        'bearer': process.env.token
       }
     }, function(err, res) {
       if (err) console.log(err);

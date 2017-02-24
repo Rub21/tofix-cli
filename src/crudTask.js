@@ -2,9 +2,10 @@ var fs = require('fs');
 var request = require('request');
 var token = process.env.token;
 module.exports = {
-  create: function(host, file, name, description, changesetComment) {
+  create: function(host, file, name, description, changesetComment, idproject) {
     console.log('CREATE TASK :' + host + '/tasks');
     var formData = {
+      idproject: idproject,
       name: name,
       description: description,
       changesetComment: changesetComment,
@@ -21,10 +22,10 @@ module.exports = {
       console.log(res.body);
     });
   },
-  list: function(host) {
-    console.log('LIST TASK :' + host + '/tasks');
+  list: function(host, idproject) {
+    console.log('LIST TASK :' + host + '/' +idproject);
     request.get({
-      url: host + '/tasks'
+      url: host + '/' + idproject+'?token=' + token
     }, function(err, res) {
       if (err) console.log(err);
       console.log(res.body);
@@ -54,11 +55,12 @@ module.exports = {
       console.log(res.body);
     });
   },
-  delete: function(host, idtask) {
+  delete: function(host, idproject,idtask) {
     request.delete({
       url: host + '/tasks',
       formData: {
-        idtask: idtask
+        idtask: idtask,
+        idproject:idproject
       },
       auth: {
         'bearer': process.env.token

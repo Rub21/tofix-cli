@@ -15,26 +15,45 @@ var action = argv._[1];
 
 if (host) {
   switch (action) {
-    case 'create':
-      crudTask.create(host, argv.file, argv.name, argv.description, argv.comment);
+    //projects
+    case 'createp':
+      crudProject.create(host, argv.name, argv.description, argv.private, argv.users || '*');
       break;
-    case 'list':
-      crudTask.list(host);
+    case 'listp':
+      crudProject.list(host);
       break;
-    case 'update':
+    case 'updatep':
+      crudProject.update(host, argv.idproject, argv.name, argv.description, argv.private, argv.users);
+      break;
+    case 'deletep':
+      crudProject.delete(host, argv.idproject);
+      break;
+    default:
+      //end projects
+    case 'createt':
+      crudTask.create(host, argv.file, argv.name, argv.description, argv.comment, argv.idproject);
+      break;
+    case 'listt':
+      crudTask.list(host, argv.idproject);
+      break;
+    case 'updatet':
       crudTask.update(host, argv.idtask, argv.file, argv.name, argv.description, argv.comment);
       break;
-    case 'delete':
+    case 'deletet':
       crudTask.delete(host, argv.idtask);
       break;
+      ///users
     case 'changerole':
       crudUser.changerole(host, argv.role, argv.iduser);
       break;
-    case 'deleteuser':
+    case 'deleteu':
       crudUser.deleteuser(host, argv.iduser);
       break;
-    case 'listusers':
+    case 'listu':
       crudUser.listusers(host);
+      break;
+    case 'userd':
+      crudUser.userdetail(host);
       break;
     case 'replacetask':
       settingTask.replacetask(host, argv.idtask);
@@ -51,16 +70,7 @@ if (host) {
     case 'import':
       importES.import(host);
       break;
-    case 'createp':
-      crudProject.create(host, argv.name, argv.description, argv.private, argv.users);
-      break;
-    case 'listp':
-      crudProject.list(host);
-      break;
-    case 'updatep':
-      crudProject.update(host, argv.idproject, argv.name, argv.description, argv.private, argv.users);
-      break;
-    default:
+
       console.log('unknown command');
   }
 }

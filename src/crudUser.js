@@ -36,7 +36,16 @@ module.exports = {
   listusers: function(host) {
     console.log('LIST :' + host + '/users');
     request.get({
-      url: host + '/users?token='+token,
+      url: host + '/users?token=' + token,
+    }, function(err, res) {
+      if (err) console.log(err);
+      console.log(res.body);
+    });
+  },
+  userdetail: function(host) {
+    console.log('USER DETAIL :' + host + '/user/details');
+    request.get({
+      url: host + '/user/details?token=' + token,
     }, function(err, res) {
       if (err) console.log(err);
       console.log(res.body);
