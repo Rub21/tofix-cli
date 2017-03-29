@@ -12,7 +12,7 @@ create a folder called `export`and the get into it and run the next command line
 
 `s3://tofix/tasks/geojson`
 
-Download the files into files folder.
+Download the files into `export/files` folder.
 
 `aws s3 sync  s3://tofix/tasks/geojson/ .`
 
