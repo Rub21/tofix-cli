@@ -14,7 +14,7 @@ module.exports = {
     fs.existsSync('stats') || fs.mkdirSync('stats');
     fs.existsSync('files') || fs.mkdirSync('files');
 
-   //List of tasks
+    //List of tasks
     q.defer(function(cb) {
       listTasks(host, function(resp) {
         tasks = JSON.parse(resp).tasks;
@@ -33,8 +33,13 @@ module.exports = {
           url: host + '/tasks/' + task.idtask + '/items/action/noterror'
         }, function(err, noterroitemsResp) {
           if (err) console.log(err);
+          var arr = '[]';
 
-          writeFile('noterror/' + task.idtask + '-noterror.json', JSON.parse(noterroitemsResp.body), function() {
+          if (noterroitemsResp.statusCode === 200) {
+            // arr = '[\"' + JSON.parse(noterroitemsResp.body)[0] + '\"]';
+            arr = JSON.parse(noterroitemsResp.body);
+          }
+          writeFile('noterror/' + task.idtask + '-noterror.json', JSON.parse(arr), function() {
             num++;
             if (tasks.length > num) {
               downloadNoterror(tasks[num]);

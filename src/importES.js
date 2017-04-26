@@ -118,57 +118,60 @@ module.exports = {
 
     // //get current tasks
     q.defer(function(cb) {
-      request.get({
-        url: host + '/tasks'
-      }, function(err, res) {
-        if (err) console.log(err);
-        currentTaks = JSON.parse(res.body).tasks;
-        cb();
-      });
+
+     currentTaks= tasks
+     cb();
+      // request.get({
+      //   url: host + '/tasks'
+      // }, function(err, res) {
+      //   if (err) console.log(err);
+      //   currentTaks = JSON.parse(res.body).tasks;
+      //   cb();
+      // });
     });
 
     // Update Tasks
-    q.defer(function(cb) {
-      var num = 0;
-      updateTasks(tasks[num]);
+    // q.defer(function(cb) {
+    //   var num = 0;
+    //   updateTasks(tasks[num]);
 
-      function updateTasks(task) {
-        if (avoidTasks.indexOf(task.idtask) < 0) {
-          console.log('UPDATE TASK:' + task.idtask);
-          readfile('detail/' + task.idtask + '-detail.json', function(data) {
-            for (var k = 0; k < currentTaks.length; k++) {
-              if (data.idtask === currentTaks[k].idtask) {
-                data.value.stats.push(currentTaks[k].value.stats);
-              }
-            }
-            request.post({
-              url: host + '/settings/update',
-              formData: {
-                index: 'tofix',
-                type: 'tasks',
-                id: task.idtask,
-                obj: JSON.stringify(data)
-              },
-              auth: {
-                'bearer': token
-              }
-            }, function(err, res) {
-              if (err) console.log(err);
-              console.log(res.statusCode);
-              num++;
-              if (tasks.length > num) {
-                updateTasks(tasks[num]);
-              } else {
-                cb();
-              }
-            });
-          });
-        } else {
-          num++;
-          updateTasks(tasks[num]);
-        }
-      }
-    });
+    //   function updateTasks(task) {
+    //     if (avoidTasks.indexOf(task.idtask) < 0) {
+    //       console.log('UPDATE TASK:' + task.idtask);
+    //       readfile('detail/' + task.idtask + '-detail.json', function(data) {
+    //         for (var k = 0; k < currentTaks.length; k++) {
+    //           if (data.idtask === currentTaks[k].idtask) {
+    //             data.value.stats.push(currentTaks[k].value.stats);
+    //           }
+    //         }
+    //         request.post({
+    //           url: host + '/settings/update',
+    //           formData: {
+    //             index: 'tofix',
+    //             type: 'tasks',
+    //             id: task.idtask,
+    //             obj: JSON.stringify(data)
+    //           },
+    //           auth: {
+    //             'bearer': token
+    //           }
+    //         }, function(err, res) {
+    //           if (err) console.log(err);
+    //           console.log(res.statusCode);
+    //           num++;
+    //           if (tasks.length > num) {
+    //             updateTasks(tasks[num]);
+    //           } else {
+    //             cb();
+    //           }
+    //         });
+    //       });
+    //     } else {
+    //       num++;
+    //       updateTasks(tasks[num]);
+    //     }
+    //   }
+    // });
 
     //update stats
     q.defer(function(cb) {
