@@ -35,11 +35,11 @@ module.exports = {
           if (err) console.log(err);
           var arr = '[]';
 
-          if (noterroitemsResp.statusCode === 200) {
-            // arr = '[\"' + JSON.parse(noterroitemsResp.body)[0] + '\"]';
+          if (noterroitemsResp.statusCode === 200 && JSON.parse(noterroitemsResp.body)[0] !== 'undefined') {
             arr = JSON.parse(noterroitemsResp.body);
           }
-          writeFile('noterror/' + task.idtask + '-noterror.json', JSON.parse(arr), function() {
+
+          writeFile('noterror/' + task.idtask + '-noterror.json', arr, function() {
             num++;
             if (tasks.length > num) {
               downloadNoterror(tasks[num]);
