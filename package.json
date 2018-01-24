@@ -1,18 +1,19 @@
 {
-  "name": "create-tasks-tofix",
+  "name": "tofix-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "4.3.0"
-  },
   "bin": {
     "tfcli": "index.js"
   },
   "dependencies": {
-    "d3-queue": "^3.0.3",
+    "@turf/turf": "^5.1.6",
+    "bluebird-queue": "0.0.8",
+    "d3-queue": "^3.0.7",
     "minimist": "^1.2.0",
-    "request": "^2.69.0"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "sha1": "^1.1.1"
   },
   "author": "Rub21",
   "license": "BSD"
