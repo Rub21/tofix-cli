@@ -11,38 +11,21 @@ $ npm link
 
 ### Usage
 
-- dev, staging, production
+```
+export TOKEN=XXX
+export HOST=http://35.171.167.220:8000
+```
 
-`export token="xxx"`
+### Create a Project
 
-### Create a task
+```
+tfcli create-project --name="Unconnected highways" --comment="#to-fix fixing unconnected highways"
 
-`tfcli staging create --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
+```
 
-### List tasks
+### List Projects
 
-`tfcli staging list`
+```
+tfcli list-project
 
-### Update a Task
-
-
-`tfcli staging update  --idtask 'abc' --name 'test' --description 'descripcion' --comment 'comments' --file output_geojson.geojson`
-
-
-### Delete a task
-
-`txcli staging delete --idtask unconnectedmajorhighwayshmdcz`
-
-### Change user role
-
-`tfcli staging changerole --role superadmin --iduser 51320836`
-
-### Delete a user
-
-`tfcli staging deleteuser --iduser 51320836`
-
-### List users
-
-`tfcli staging listusers`
-
-### [Export and Import](https://github.com/Rub21/tofix-cli/blob/master/IMPORT.md)
+```

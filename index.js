@@ -18,8 +18,11 @@ switch (action) {
       comment: argv.comment
     });
     break;
+  case 'list-project':
+    crudProjects.list();
+    break;
   case 'create-items':
-    crudItem.create( argv.file, argv.idProject);
+    crudItem.create(argv.file, argv.idProject);
     break;
   default:
     console.log('unknown command');
