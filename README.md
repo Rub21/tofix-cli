@@ -29,3 +29,8 @@ tfcli create-project --name="Unconnected highways" --comment="#to-fix fixing unc
 tfcli list-project
 
 ```
+### Create items
+
+```
+ tfcli create-items --file=unconnectedhighways.geojson --idProject="46e648c4-5a49-46b8-8bc7-2f49cae23274"
+```
