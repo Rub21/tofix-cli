@@ -6,11 +6,15 @@
   "bin": {
     "tfcli": "index.js"
   },
+  "scripts": {
+    "format": "./node_modules/.bin/prettier --single-quote --write --print-width 120  src/*.js *.js"
+  },
   "dependencies": {
     "@turf/turf": "^5.1.6",
     "bluebird-queue": "0.0.8",
     "d3-queue": "^3.0.7",
     "minimist": "^1.2.0",
+    "prettier": "^1.11.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "sha1": "^1.1.1",

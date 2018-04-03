@@ -1,13 +1,14 @@
 var fs = require('fs');
-const request = require('request-promise')
-
+var request = require('request-promise');
 var config = require('./config');
 
 module.exports = {
   create: function(opts) {
-    const options = {
+    var url = config.HOST + '/projects';
+    console.log(url);
+    var options = {
       method: 'POST',
-      uri: config.HOST + '/projects',
+      uri: url,
       body: {
         name: opts.name,
         metadata: {
@@ -17,34 +18,35 @@ module.exports = {
       json: true,
       headers: {
         'User-Agent': 'Request-Promise',
-        'Authorization': config.TOKEN
+        Authorization: config.TOKEN
       }
     };
     request(options)
       .then(function(response) {
-        console.log(response)
+        console.log(response);
       })
       .catch(function(err) {
-        console.log(err)
+        console.log(err);
       });
   },
 
   list: function() {
-    const options = {
+    var url = config.HOST + '/projects';
+    var options = {
       method: 'GET',
-      uri: config.HOST + '/projects',
+      uri: url,
       json: true,
       headers: {
         'User-Agent': 'Request-Promise',
-        'Authorization': config.TOKEN
+        Authorization: config.TOKEN
       }
     };
     request(options)
       .then(function(response) {
-        console.log(response)
+        console.log(response.data);
       })
       .catch(function(err) {
-        console.log(err)
+        console.log(err);
       });
   }
 };

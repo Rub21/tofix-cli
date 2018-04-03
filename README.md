@@ -13,7 +13,7 @@ $ npm link
 
 ```
 export TOKEN=XXX
-export HOST=http://35.171.167.220:8000
+export HOST=http://54.209.223.159:8000/v1
 ```
 
 ### Create a Project
@@ -32,5 +32,5 @@ tfcli list-project
 ### Create items
 
 ```
- tfcli create-items --file=unconnectedhighways.geojson --idProject="46e648c4-5a49-46b8-8bc7-2f49cae23274"
+ tfcli create-items --file=unconnectedhighways.geojson --idProject="5695a0fb-a41a-4736-ae65-93a42811433b"
 ```
