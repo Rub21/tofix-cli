@@ -43,7 +43,7 @@ module.exports = {
     };
     request(options)
       .then(function(response) {
-        console.log(response.data);
+        console.log(response);
       })
       .catch(function(err) {
         console.log(err);
