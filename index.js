@@ -2,7 +2,7 @@
 
 var argv = require('minimist')(process.argv.slice(2));
 var crudProjects = require('./src/crudProjects');
-var crudItem = require('./src/crudItem');
+var items = require('./src/items');
 var config = require('./src/config');
 var action = argv._[0];
 console.log(action);
@@ -13,11 +13,17 @@ switch (action) {
       comment: argv.comment
     });
     break;
-  case 'list-project':
+  case 'list-projects':
     crudProjects.list();
     break;
   case 'create-items':
-    crudItem.create(argv.file, argv.idProject);
+    items.createItems(argv.file, argv.idProject);
+    break;
+  case 'list-items':
+    items.listItems(argv.idProject);
+    break;
+  case 'delete-items':
+    items.deleteItems(argv.file, argv.idProject);
     break;
   default:
     console.log('unknown command');
