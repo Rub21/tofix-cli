@@ -9,7 +9,8 @@ $ npm link
 
 ```
 
-### Usage
+# Usage Projects
+
 
 ```
 export TOKEN=XXX
@@ -29,16 +30,35 @@ tfcli create-project --name="Unconnected highways" --comment="#to-fix fixing unc
 tfcli list-project
 
 ```
+
+### Delete a project
+
+```
+tfcli delete-project --idProject="xxx"
+
+```
+
+# Usage Items
+
+
 ### Create items
 
 ```
  tfcli create-items --file=unconnectedhighways.geojson --idProject="5695a0fb-a41a-4736-ae65-93a42811433b"
 ```
 
+### List items in a project
+
+```
+tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
+
+```
+
+
 ### Delete Items in a project
 
 ```
-  tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
-  tfcli delete-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b" --file=output.json
+tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
+tfcli delete-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b" --file=output.json
 
 ```
