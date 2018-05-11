@@ -7,7 +7,7 @@
     "tfcli": "index.js"
   },
   "scripts": {
-    "format": "./node_modules/.bin/prettier --single-quote --write --print-width 120  src/*.js *.js"
+    "format": "./node_modules/.bin/prettier --single-quote --write --print-width 120 src/**/*.js src/*.js *.js"
   },
   "dependencies": {
     "@turf/turf": "^5.1.6",

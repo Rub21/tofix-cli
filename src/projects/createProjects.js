@@ -26,4 +26,4 @@ module.exports = function(opts) {
     .catch(function(err) {
       console.log(err);
     });
-}
+};

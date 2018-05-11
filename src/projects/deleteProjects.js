@@ -17,4 +17,4 @@ module.exports = function(idProject) {
     .catch(function(err) {
       console.log(err);
     });
-}
+};

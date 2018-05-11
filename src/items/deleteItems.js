@@ -16,8 +16,8 @@ module.exports = function(file, idProject) {
   });
   rd.on('line', function(item) {
     var id = JSON.parse(item).id;
-    var urlItem = config.HOST + '/projects/' + idProject + '/items/' + id
-    console.log(urlItem)
+    var urlItem = config.HOST + '/projects/' + idProject + '/items/' + id;
+    console.log(urlItem);
     var options = {
       method: 'DELETE',
       uri: urlItem,
@@ -36,4 +36,4 @@ module.exports = function(file, idProject) {
       });
     });
   });
-}
+};

@@ -48,4 +48,4 @@ module.exports = function(file, idProject) {
       console.log(res);
     });
   });
-}
+};

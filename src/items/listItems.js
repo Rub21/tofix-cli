@@ -4,7 +4,7 @@ var config = require('./../config');
 
 module.exports = function(idProject) {
   var url = config.HOST + '/projects/' + idProject + '/items';
-  console.log(url)
+  console.log(url);
   var options = {
     method: 'GET',
     uri: url,
@@ -30,4 +30,4 @@ module.exports = function(idProject) {
     .catch(function(err) {
       console.log(err);
     });
-}
+};
