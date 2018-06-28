@@ -27,7 +27,7 @@ tfcli create-project --name="Unconnected highways" --comment="#to-fix fixing unc
 ### List Projects
 
 ```
-tfcli list-project
+tfcli list-projects
 
 ```
 
@@ -58,7 +58,6 @@ tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
 ### Delete Items in a project
 
 ```
-tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
 tfcli delete-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b" --file=output.json
 
 ```
