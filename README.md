@@ -50,10 +50,10 @@ tfcli delete-project --idProject="xxx"
 ### List items in a project
 
 ```
-tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b"
-
+tfcli list-items --idProject="7f03215c-bad1-4333-80d2-511934c9339b" --query="page=0&page_size=5000"
 ```
 
+Check more here 👉https://github.com/osmlab/to-fix-backend/blob/master/API.md#get-items
 
 ### Delete Items in a project
 

@@ -23,7 +23,7 @@ switch (action) {
     items.createItems(argv.file, argv.idProject);
     break;
   case 'list-items':
-    items.listItems(argv.idProject);
+    items.listItems(argv.idProject, argv.queries);
     break;
   case 'delete-items':
     items.deleteItems(argv.file, argv.idProject);
